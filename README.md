@@ -316,5 +316,5 @@ Built on the shoulders of:
 
 ## Contact
 
-- GitHub: [@your-handle](https://github.com/Taha95-dev)
+- GitHub: [@Taha95-dev](https://github.com/Taha95-dev)
 - Issues and PRs welcome — but this is a personal config, so responses may be slow.
