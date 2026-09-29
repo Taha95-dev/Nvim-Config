@@ -1,0 +1,20 @@
+#!/bin/bash
+# Compile with debug symbols
+
+if [ -f "CMakeLists.txt" ]; then
+  # CMake project
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Debug ..
+  make
+elif [ -f "Makefile" ]; then
+  # Make project
+  make CFLAGS="-g -O0" CXXFLAGS="-g -O0"
+else
+  # Single file
+  for file in *.c *.cpp; do
+    if [ -f "$file" ]; then
+      gcc -g -O0 -Wall -Wextra -o "${file%.*}" "$file"
+    fi
+  done
+fi
