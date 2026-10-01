@@ -15,7 +15,9 @@ map("n", "<A-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width"
 map("n", "<A-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- Telescope keymaps
-map("n", "<leader><leader>", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
+vim.keymap.set("n", "<leader><leader>", function()
+  require("telescope.builtin").find_files({ hidden = true })
+end, { desc = "Find files (including hidden)" })
 map("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Help tags" })

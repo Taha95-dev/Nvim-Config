@@ -1,36 +1,37 @@
 -- ~/.config/nvim/lua/core/colorscheme.lua
 
 local function setup_colorscheme()
-  -- ── Bold charcoal palette ───────────────────────────────────
+  -- ── Dark charcoal, high contrast, non-bland ─────────────────
   local colors = {
-    -- Surfaces (kept transparent)
+    -- Surfaces (transparent)
     bg_dark      = "#121212",
     bg           = "#1A1A1A",
     bg_light     = "#222222",
-    bg_highlight = "#2E2E2E",  -- slightly brighter so cursorline stands out
+    bg_highlight = "#2E2E2E",
     border       = "#3A3A3A",
 
-    -- Text ladder (wider range, brighter top)
-    fg           = "#E8E8E8",  -- main text: much brighter now
-    fg_bright    = "#FFFFFF",  -- active / cursor
-    fg_dim       = "#A8A8A8",  -- secondary
-    fg_dimmer    = "#787878",  -- comments (brighter than before)
-    fg_dimmest   = "#5A5A5A",  -- line numbers
+    -- Text ladder
+    fg           = "#E8E8E8",
+    fg_bright    = "#FFFFFF",
+    fg_dim       = "#A8A8A8",
+    fg_dimmer    = "#7A7A7A",
+    fg_dimmest   = "#5A5A5A",
 
-    -- Muted syntax accents (brighter + bolder)
-    kw        = "#E0E0E0",  -- keywords: near-white, bold
-    kw2       = "#B8B8B8",  -- return/local/etc, bold
-    str       = "#A8D8A9",  -- strings: dim grey
-    num       = "#7C9C9C",  -- numbers: more like steel blue
-    fn        = "#A9B0E0",  -- functions: A bit like cyan, bold
-    typ       = "#D9C0C0",  -- types: brighter rose-gray
-    ident     = "#E0E0E0",  -- identifiers: near-white
-    op        = "#A0A0A0",  -- operators: brighter than before
-    punc      = "#909090",  -- punctuation
-    constant  = "#D8C8B0",  -- constants: brighter dusty warm
-    special   = "#B0C8C8",  -- special/regex: brighter cool
+    -- Syntax accents — distinct hues, muted but readable
+    -- (each category gets its own color family, not just a gray)
+    kw        = "#C9A0DC",  -- keywords: soft lavender
+    kw2       = "#A88BC4",  -- return/local: deeper lavender
+    str       = "#9ECF9E",  -- strings: soft sage green
+    num       = "#8FB8D8",  -- numbers: soft sky blue
+    fn        = "#E8C48A",  -- functions: warm amber
+    typ       = "#7EC8C8",  -- types: soft teal
+    ident     = "#E0E0E0",  -- identifiers: near-white (neutral)
+    op        = "#B0A8C0",  -- operators: muted violet-gray
+    punc      = "#8A8A8A",  -- punctuation: neutral gray
+    constant  = "#D8A878",  -- constants: burnt orange
+    special   = "#C89AC8",  -- special: soft magenta
 
-    -- Functional colors (bolder so diagnostics pop)
+    -- Functional (diagnostics, git)
     red       = "#E88A8A",
     green     = "#A8D8A8",
     yellow    = "#E8D890",
@@ -46,7 +47,7 @@ local function setup_colorscheme()
   hl(0, "NormalFloat",  { fg = colors.fg,         bg = "NONE" })
   hl(0, "FloatBorder",  { fg = colors.border,     bg = "NONE" })
   hl(0, "CursorLine",   { bg = colors.bg_highlight })
-  hl(0, "CursorLineNr", { fg = colors.fg_bright,  bg = "NONE", bold = true })
+  hl(0, "CursorLineNr", { fg = colors.fn,         bg = "NONE", bold = true })
   hl(0, "LineNr",       { fg = colors.fg_dimmest, bg = "NONE" })
   hl(0, "SignColumn",   { bg = "NONE" })
   hl(0, "VertSplit",    { fg = colors.border,     bg = "NONE" })
@@ -75,7 +76,7 @@ local function setup_colorscheme()
   hl(0, "BufferVisibleIcon",     { fg = colors.fg_dim,    bg = "NONE" })
   hl(0, "BufferInactiveIcon",    { fg = colors.fg_dimmer, bg = "NONE" })
 
-  -- ── Vim syntax (bold + bright hierarchy) ────────────────────
+  -- ── Vim syntax ──────────────────────────────────────────────
   hl(0, "Comment",     { fg = colors.fg_dimmer, italic = true, bg = "NONE" })
   hl(0, "String",      { fg = colors.str,       bg = "NONE" })
   hl(0, "Number",      { fg = colors.num,       bg = "NONE" })
@@ -118,7 +119,7 @@ local function setup_colorscheme()
   hl(0, "TabLineSel",   { fg = colors.fg,        bg = "NONE", bold = true })
   hl(0, "TabLineFill",  { bg = "NONE" })
 
-  -- ── LSP diagnostics (bold so they pop) ──────────────────────
+  -- ── LSP diagnostics ─────────────────────────────────────────
   hl(0, "DiagnosticError", { fg = colors.red,    bg = "NONE" })
   hl(0, "DiagnosticWarn",  { fg = colors.yellow, bg = "NONE" })
   hl(0, "DiagnosticInfo",  { fg = colors.blue,   bg = "NONE" })
@@ -215,7 +216,7 @@ local function setup_colorscheme()
   hl(0, "DapUIRestart",                 { fg = colors.green,     bg = "NONE" })
   hl(0, "DapUIPlayPause",               { fg = colors.blue,      bg = "NONE" })
 
-  -- ── Floats that need a real background ──────────────────────
+  -- ── Floats with real background ─────────────────────────────
   hl(0, "CmpPmenu",       { fg = colors.fg_dim,     bg = colors.bg_light })
   hl(0, "CmpPmenuBorder", { fg = colors.border,     bg = colors.bg_light })
   hl(0, "CmpPmenuSel",    { fg = colors.fg_bright,  bg = colors.bg_highlight, bold = true })

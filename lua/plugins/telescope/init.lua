@@ -28,9 +28,23 @@ return {
           },
         },
         sorting_strategy = "ascending",
+
+        -- Force ripgrep to search hidden files
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--no-ignore-vcs",
+        }, 
+
         file_ignore_patterns = {
           "node_modules",
-          ".git/",
+          "%.git/",
           "%.lock",
           "__pycache__",
           "%.pyc",

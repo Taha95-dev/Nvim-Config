@@ -1,18 +1,23 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",              -- add this
+  branch = "main",
   build = ":TSUpdate",
   config = function()
-    local ok, treesitter = pcall(require, "nvim-treesitter.configs")
-    if not ok then
-      vim.notify("Treesitter not available", vim.log.levels.WARN)
-      return
-    end
-    treesitter.setup({
-      ensure_installed = { "lua", "vim", "c", "cpp", "python", "bash" },
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
+    local ts = require("nvim-treesitter")
+    local languages = { "lua", "vim", "c", "cpp", "python", "bash" }
+
+    -- Install parsers
+    ts.install(languages)
+
+    -- Enable highlighting/indent/folds per filetype
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = languages,
+      callback = function()
+        vim.treesitter.start()
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo.foldmethod = "expr"
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
     })
   end,
 }
