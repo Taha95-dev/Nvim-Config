@@ -42,5 +42,8 @@ require("lazy").setup({
   { import = "plugins.server" },
   { import = "plugins.garbage-day" },
   { import = "plugins.emmet" },
-  { import = "plugins.neo-tree"},
+  { import = "plugins.neo-tree" },
+  { import = "plugins.lazyGit" },
+  { import = "plugins.noice" },
+  { import = "plugins.toggleterm" },
 })

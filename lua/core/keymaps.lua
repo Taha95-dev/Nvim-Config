@@ -24,6 +24,13 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Help tags" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
 map("n", "<leader>fr", "<cmd>Telescope resume<CR>", { desc = "Resume previous search" })
 
+-- Git actions
+local t_builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>gc', t_builtin.git_commits, { desc = 'Git commits' })
+vim.keymap.set('n', '<leader>gC', t_builtin.git_bcommits, { desc = 'Buffer commits' })
+vim.keymap.set('n', '<leader>gs', t_builtin.git_status, { desc = 'Git status' })
+vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { desc = 'LazyGit' })
+
 -- Better escape
 map("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
@@ -60,7 +67,7 @@ map("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
 map("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
 map("n", "<leader>sc", ":close<CR>", { desc = "Close window" })
 
--- Move Lines 
+-- Move Lines
 map("n", "<A-j>", ":m .+1<CR>==")
 map("n", "<A-k>", ":m .-2<CR>==")
 map("v", "<A-j>", ":m '>+1<CR>gv=gv")

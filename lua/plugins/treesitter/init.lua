@@ -4,7 +4,7 @@ return {
   build = ":TSUpdate",
   config = function()
     local ts = require("nvim-treesitter")
-    local languages = { "lua", "vim", "c", "cpp", "python", "bash" }
+    local languages = { "lua", "vim", "c", "cpp", "python", "bash", "cmake" }
 
     -- Install parsers
     ts.install(languages)

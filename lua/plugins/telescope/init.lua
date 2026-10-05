@@ -20,11 +20,18 @@ return {
         prompt_prefix = "🔍 ",
         selection_caret = "➜ ",
         path_display = { "smart" },
-        layout_strategy = "horizontal",
+        layout_strategy = "flex",
         layout_config = {
+        flex = {
+          flip_columns = 100, -- switch to vertical when width < 100
+        },
           horizontal = {
             prompt_position = "top",
             preview_width = 0.5,
+          },
+          vertical = {
+            prompt_position = "top",
+            preview_height = 0.5,
           },
         },
         sorting_strategy = "ascending",
@@ -40,7 +47,7 @@ return {
           "--smart-case",
           "--hidden",
           "--no-ignore-vcs",
-        }, 
+        },
 
         file_ignore_patterns = {
           "node_modules",

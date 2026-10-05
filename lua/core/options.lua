@@ -16,6 +16,9 @@ opt.cursorline = true      -- Subtle highlight across active code row
 opt.termguicolors = true   -- Enable true color output
 opt.signcolumn = "yes"     -- Keep layout margin static for git/error markers
 
+-- command line options
+vim.opt.cmdheight = 0
+
 -- Keep folds open by default
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -23,8 +26,8 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
 -- Tab & Indentation Rules for Clean C/C++ Style Guidelines
-opt.tabstop = 4            
-opt.shiftwidth = 4         
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.expandtab = true       -- Smart white-space conversion
 opt.smartindent = true     -- Insert indents automatically according to syntax
 

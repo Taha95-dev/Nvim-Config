@@ -17,14 +17,14 @@ local function setup_colorscheme()
     fg_dimmer    = "#7A7A7A",
     fg_dimmest   = "#5A5A5A",
 
-    -- Syntax accents — distinct hues, muted but readable
-    -- (each category gets its own color family, not just a gray)
-    kw        = "#C9A0DC",  -- keywords: soft lavender
-    kw2       = "#A88BC4",  -- return/local: deeper lavender
+    -- Syntax accents
+    kw        = "#8A8A8A",  -- keywords: charcoal gray
+    kw2       = "#6E6E6E",  -- return/local: deeper charcoal
     str       = "#9ECF9E",  -- strings: soft sage green
     num       = "#8FB8D8",  -- numbers: soft sky blue
-    fn        = "#E8C48A",  -- functions: warm amber
+    fn        = "#F0E6D2",  -- functions: cream
     typ       = "#7EC8C8",  -- types: soft teal
+    struct    = "#D88BA8",  -- structs: rose
     ident     = "#E0E0E0",  -- identifiers: near-white (neutral)
     op        = "#B0A8C0",  -- operators: muted violet-gray
     punc      = "#8A8A8A",  -- punctuation: neutral gray
@@ -94,7 +94,7 @@ local function setup_colorscheme()
   hl(0, "Delimiter",   { fg = colors.punc,      bg = "NONE" })
   hl(0, "Type",        { fg = colors.typ,       bg = "NONE" })
   hl(0, "StorageClass",{ fg = colors.kw,        bg = "NONE", bold = true })
-  hl(0, "Structure",   { fg = colors.typ,       bg = "NONE", bold = true })
+  hl(0, "Structure",   { fg = colors.struct,    bg = "NONE", bold = true })
   hl(0, "PreProc",     { fg = colors.special,   bg = "NONE" })
   hl(0, "Include",     { fg = colors.special,   bg = "NONE", bold = true })
   hl(0, "Define",      { fg = colors.special,   bg = "NONE", bold = true })
@@ -158,10 +158,14 @@ local function setup_colorscheme()
   hl(0, "@keyword",              { fg = colors.kw,  bold = true })
   hl(0, "@keyword.return",       { fg = colors.kw2, bold = true })
   hl(0, "@keyword.function",     { fg = colors.kw2, bold = true })
+  hl(0, "@keyword.type",         { fg = colors.kw,  bold = true })
+  hl(0, "@keyword.storage",      { fg = colors.kw,  bold = true })
   hl(0, "@conditional",          { fg = colors.kw2, bold = true })
   hl(0, "@repeat",               { fg = colors.kw2, bold = true })
   hl(0, "@type",                 { fg = colors.typ })
   hl(0, "@type.builtin",         { fg = colors.typ, bold = true })
+  hl(0, "@type.definition",      { fg = colors.struct, bold = true })
+  hl(0, "@structure",            { fg = colors.struct, bold = true })
   hl(0, "@variable",             { fg = colors.ident })
   hl(0, "@variable.parameter",   { fg = colors.fg_dim })
   hl(0, "@variable.builtin",     { fg = colors.constant, bold = true })
@@ -225,6 +229,11 @@ local function setup_colorscheme()
   hl(0, "GitSignsAdd",    { fg = colors.green,  bg = "NONE" })
   hl(0, "GitSignsChange", { fg = colors.orange, bg = "NONE" })
   hl(0, "GitSignsDelete", { fg = colors.red,    bg = "NONE" })
+
+  -- ── Notify ───────────────────────────────────────────────
+  require("notify").setup({
+    background_colour = "#000000",
+  })
 end
 
 return setup_colorscheme
